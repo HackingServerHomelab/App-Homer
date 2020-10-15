@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  homer:
+    image: b4bz/homer:latest
+    container_name: homer
+    hostname: homer
+    restart: unless-stopped
+    volumes:
+      - ../Data/assets:/www/assets
+      - ../Config/config.yml:/www/assets/config.yml
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    hostname: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../Config/nginx.conf:/etc/nginx/nginx.conf
+      - ../Data/nginx:/etc/ssl/private

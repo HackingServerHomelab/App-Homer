@@ -1,0 +1,12 @@
+---
+title: "Example Dashboard"
+subtitle: "Example Dashboard Subtitle"
+
+services:
+  - name: "ExampleCategory"
+    icon: "fas fa-external-link-alt"
+    items:
+      - name: "Example Name"
+        subtitle: "Example Subtitle"
+        tag: "exampletag"
+        url: "https://example.com/"
