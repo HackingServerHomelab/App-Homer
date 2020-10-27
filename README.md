@@ -3,15 +3,15 @@
 ## First Time Prerequisites
 
 1. Configure the [config.yml](./Config/config.yml) file
+2. Run [Traefik](https://github.com/mattlombana/App-Traefik)
 
 ## Running the Containers
 
-1. Run `./Config/gen_certs.sh` to generate the SSL certificates (alternatively,
-   add custom certs to the private folder)
-2. Update the `server_name` in [nginx.conf](./Config/nginx.conf)
-3. Configure the following mount points in [docker-compose.yml](./Docker/docker-compose.yml)
+1. Configure the following mount points in [docker-compose.yml](./Docker/docker-compose.yml)
     * `../Data/assets:/www/assets`
     * `../Config/config.yml:/www/assets/config.yml`
+3. Update the Traefik host label in [docker-compose.yml](./Docker/docker-compose.yml)
+    * ``"traefik.http.routers.homer.rule=Host(`localhost`)"``
 4. Run `docker-compose -f ./Docker/docker-compose.yml up -d`
 
 ## First Time Setup

@@ -8,14 +8,13 @@ services:
     volumes:
       - ../Data/assets:/www/assets
       - ../Config/config.yml:/www/assets/config.yml
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    hostname: nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ../Config/nginx.conf:/etc/nginx/nginx.conf
-      - ../Data/nginx:/etc/ssl/private
+    labels:
+      # Traefik Labels
+      - "traefik.enable=true"
+      # HTTPS Labels
+      - "traefik.http.routers.homer.rule=Host(`localhost`)" # Domain Name
+      - "traefik.http.routers.homer.entrypoints=web-secure"
+      - "traefik.http.routers.homer.middlewares=default-headers@file"
+      - "traefik.http.routers.homer.service=homer"
+      - "traefik.http.routers.homer.tls=true"
+      - "traefik.http.services.homer.loadbalancer.server.port=8080" # Proxied Port
