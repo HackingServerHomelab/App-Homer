@@ -3,7 +3,7 @@
 ## First Time Prerequisites
 
 1. Configure the [config.yml](./Config/config.yml) file
-2. Run [Traefik](https://github.com/mattlombana/App-Traefik)
+2. Run [Traefik](https://github.com/HackingServerHomelab/App-Traefik)
 
 ## Running the Containers
 
